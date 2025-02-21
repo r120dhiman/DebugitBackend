@@ -15,10 +15,13 @@ const VoteRouter = require('./routes/Vote');
 //Env Variables
 const port=process.env.PORT || 3001;
 //Middlewares
-app.use(cors());
+app.use(cors( {
+  origin: "https://debugit-frontend.vercel.app/", 
+  credentials: true
+}));
 app.use(cookieParser());
-// app.use(checkforcookie('token'));
-app.use(express.json()); // Add this to parse JSON body
+
+app.use(express.json()); 
 
 const DB_URL= process.env.MONGO_URL2;
 
