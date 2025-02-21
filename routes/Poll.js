@@ -23,7 +23,8 @@ PollRouter.post('/create', async (req, res) => {
   }
 });
 PollRouter.get('/userpolls',async(req,res ) => {
-  const userpolls=await Poll.find({createdBy:req.userid});
+ const userid=req.query.userid
+  const userpolls=await Poll.find({createdBy:userid});
   return res.send(userpolls)
 }
 )

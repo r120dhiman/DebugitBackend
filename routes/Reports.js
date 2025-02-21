@@ -19,8 +19,8 @@ ReportRouter.get('/allreports',async(req,res) => {
 )
 
 ReportRouter.get('/userreports', async(req,res ) => {
-  console.log(req.userid)
-  const userreports=await Report.find({reportedby:req.userid});
+  const userid=req.query.userid;
+  const userreports=await Report.find({reportedby:userid});
   return res.send(userreports);
 }
 )
