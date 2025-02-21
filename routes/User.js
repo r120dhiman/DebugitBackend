@@ -69,5 +69,16 @@ AuthRouter.post('/signup', async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 });
-
+AuthRouter.get('/me', verifyToken, async (req, res) => {
+  try {
+      const user = await User.findById(req.userId).select('-password');
+      if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+      }
+      return res.status(200).json({ userdetails: user });
+  } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: 'Server error' });
+  }
+});
 module.exports = AuthRouter;

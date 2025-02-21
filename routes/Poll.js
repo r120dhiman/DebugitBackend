@@ -22,7 +22,11 @@ PollRouter.post('/create', async (req, res) => {
     return res.status(500).json({ error: 'Server error while creating poll' });
   }
 });
-
+PollRouter.get('/userpolls',async(req,res ) => {
+  const userpolls=await Poll.find({createdBy:req.userid});
+  return res.send(userpolls)
+}
+)
 PollRouter.get('/allpolls',async(req,res ) => {
   const allpolls=await Poll.find({});
   return res.send(allpolls);

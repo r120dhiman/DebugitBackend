@@ -17,4 +17,11 @@ ReportRouter.get('/allreports',async(req,res) => {
   return res.send(allreports);
 }
 )
+
+ReportRouter.get('/userreports', async(req,res ) => {
+  console.log(req.userid)
+  const userreports=await Report.find({reportedby:req.userid});
+  return res.send(userreports);
+}
+)
 module.exports=ReportRouter;
