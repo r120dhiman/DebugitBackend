@@ -1,27 +1,13 @@
 const {Router}= require('express');
-const Report = require('../models/Report');
+const { createreport, allreports, allreportsbyuser } = require('../controller/Reports');
+
 const ReportRouter=Router();
 
-ReportRouter.post('/newreport', async(req,res) => {
-  const {title, description,userid} =await req.body;
-
-  const report= await Report.create({title,description,reportedby:userid});
-  if (report) {
-    return res.send("Reported submitted");
-  }
-  return res.send("Some error occured");
-}
+ReportRouter.post('/newreport', createreport
 )
-ReportRouter.get('/allreports',async(req,res) => {
-  const allreports= await  Report.find({});
-  return res.send(allreports);
-}
+ReportRouter.get('/allreports',allreports
 )
 
-ReportRouter.get('/userreports', async(req,res ) => {
-  const userid=req.query.userid;
-  const userreports=await Report.find({reportedby:userid});
-  return res.send(userreports);
-}
+ReportRouter.get('/userreports', allreportsbyuser
 )
 module.exports=ReportRouter;

@@ -16,7 +16,7 @@ const VoteRouter = require('./routes/Vote');
 const port=process.env.PORT || 3001;
 //Middlewares
 app.use(cors( {
-  origin: "https://debugit-frontend.vercel.app/", 
+  origin: "*", 
   credentials: true
 }));
 app.use(cookieParser());
