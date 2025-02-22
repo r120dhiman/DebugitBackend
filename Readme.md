@@ -10,7 +10,8 @@ The Project is divided in  **2 Parts** as listed below:
 The storage of the project is Powered by MongoDB Database Service.
 
 Using all these technologies make this project a complete MERN Stack project.
-
+### Depolyment Link:- [Debugit Frontend](https://debugit-frontend.vercel.app)
+### Demo Video Link:- [Demo](https://youtu.be/iIi4efuY4dk)
 ## Features
 - **User Authentication**: Secure login and registration. The passwords of the users are hashed using **sha256** algorithm which ensures its security.
 - **Issue Reporting**: Citizens can submit and track reports.
