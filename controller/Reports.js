@@ -13,6 +13,7 @@ async function createreport(req,res) {
 
 async function allreports(req,res ) {
     const allreports= await  Report.find({});
+   allreports.sort((a,b)=>b.createdAt-a.createdAt);
   return res.send(allreports);
 }
 

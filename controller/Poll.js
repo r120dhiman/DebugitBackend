@@ -1,7 +1,7 @@
 const Poll = require('../models/Poll')
 async function createnewpoll(req,res){
 
-  const { question, options,  userid } = req.body;
+  const { question, options,  createdBy } = req.body;
   if (!question || !options || options.length === 0) {
     return res.status(400).json({ error: 'Question and at least one option are required.' });
   }
@@ -10,7 +10,7 @@ async function createnewpoll(req,res){
     const newPoll = new Poll({
       question,
       options: options.map(option => ({ optionText: option.optionText, votes: 0 })), 
-      createdBy: userid, 
+      createdBy: createdBy, 
     });
     await newPoll.save();
     return res.status(201).json({ message: 'Poll created successfully', pollId: newPoll._id });
